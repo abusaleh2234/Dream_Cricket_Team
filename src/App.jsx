@@ -1,16 +1,24 @@
 
 import './App.css'
-
+import logo from "./assets/logo.png"
+// import coin from "./assets/"
 function App() {
 
   return (
     <>
-    <div class="navbar bg-base-100 shadow-sm">
+    <div class="navbar shadow-sm max-w-7xl mx-auto">
   <div class="flex-1">
-    <a class="btn btn-ghost text-xl">daisyUI</a>
+    <a class=" text-xl">
+      <img className='w-12' src={logo} alt="" />
+    </a>
   </div>
   <div class="flex-none">
-    <ul class="menu menu-horizontal px-1">
+    <div className="">
+      <span className='mr-2'>50000000</span>
+      <span>Coin</span>
+      {/* <img src={} alt="" /> */}
+    </div>
+    {/* <ul class="menu menu-horizontal px-1">
       <li><a>Link</a></li>
       <li>
         <details>
@@ -21,7 +29,7 @@ function App() {
           </ul>
         </details>
       </li>
-    </ul>
+    </ul> */}
   </div>
 </div>
     </>
