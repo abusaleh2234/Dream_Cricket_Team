@@ -10,12 +10,14 @@ const playersFetch = async () => {
   const res = await fetch("players.json")
   return res.json()
 }
+const playersPromise = playersFetch()
 function App() {
-  const playersPromise = playersFetch()
+  
   const [toggle, setToggle] = useState(true)
+  const [availableBalance, setAvailableBalance] = useState(1000000)
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar availableBalance={availableBalance}></Navbar>
 
       <div className="max-w-7xl mx-auto py-10">
         <div className="flex justify-between items-center py-4">
@@ -29,7 +31,7 @@ function App() {
         </div>
         {
           toggle ? <Suspense fallback={<span className="loading loading-spinner loading-xl"></span>}>
-          <Available playersPromise={playersPromise}></Available>
+          <Available availableBalance={availableBalance} setAvailableBalance={setAvailableBalance} playersPromise={playersPromise}></Available>
         </Suspense> : <Selected></Selected>
         }
         

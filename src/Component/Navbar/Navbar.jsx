@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from "../../assets/logo.png"
 
-const Navbar = () => {
+const Navbar = ({availableBalance}) => {
     return (
         <div className='shadow-sm'>
             <div className="navbar  max-w-7xl mx-auto">
@@ -12,7 +12,7 @@ const Navbar = () => {
                 </div>
                 <div className="flex-none">
                     <div className="p-2 border rounded-lg shadow-sm">
-                        <span className='mr-2'>50000000</span>
+                        <span className='mr-2 font-semibold'>{availableBalance}</span>
                         <span>Coin</span>
                         {/* <img src={} alt="" /> */}
                     </div>

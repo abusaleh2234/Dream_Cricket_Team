@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import user from "../../assets/user-1.png"
 import flag from "../../assets/report-1.png"
-const PlayerCard = ({ player }) => {
+const PlayerCard = ({ player, setAvailableBalance, availableBalance }) => {
     console.log(player);
-
+    const [isSelected, setIsSelected] = useState(false)
+    const handleSelected = (price) => {
+        // console.log(price);
+        
+        const playerPrice = parseInt(price.split("USD").join("").split(",").join(""))
+        if(availableBalance< playerPrice){
+            alert("not enough coins")
+            return
+        }
+        setAvailableBalance(availableBalance - playerPrice)
+        setIsSelected(true)
+    }
     return (
         <div>
             <div className="card bg-base-100 shadow-sm">
@@ -29,12 +40,12 @@ const PlayerCard = ({ player }) => {
                         <div className="flex justify-between">
                             <p className='font-bold'>{player.bating_style}</p>
                             <span>{player.bating_style}</span>
-                            
+
                         </div>
-                        <div className="flex justify-between items-center"> 
+                        <div className="flex justify-between items-center">
                             <p className='font-bold'>{player.price}</p>
-                            <button className='btn'>Choose Player</button>
-                            
+                            <button disabled={isSelected} onClick={() => handleSelected(player.price)} className='btn'>{isSelected ? "Selected" : "Choose Player"}</button>
+
                         </div>
                     </div>
                 </div>
